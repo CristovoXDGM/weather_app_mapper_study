@@ -4,8 +4,26 @@ class CityWeatherEntity {
   final String temperature;
   final String wind;
   final String description;
-  final List<CityWeatherForecast> forecast;
+  final List<CityWeatherForecastEntity> forecast;
 
-  CityWeatherEntity(
-      this.temperature, this.wind, this.description, this.forecast);
+  CityWeatherEntity({
+    this.temperature = '',
+    this.wind = '',
+    this.description = '',
+    this.forecast = const [],
+  });
+
+  CityWeatherEntity copyWith({
+    String? temperature,
+    String? wind,
+    String? description,
+    List<CityWeatherForecastEntity>? forecast,
+  }) {
+    return CityWeatherEntity(
+      temperature: temperature ?? this.temperature,
+      wind: wind ?? this.wind,
+      description: description ?? this.description,
+      forecast: forecast ?? this.forecast,
+    );
+  }
 }

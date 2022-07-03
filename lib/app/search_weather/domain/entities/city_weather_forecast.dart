@@ -1,7 +1,8 @@
-class CityWeatherForecast {
+class CityWeatherForecastEntity {
   final String day;
   final String temperature;
   final String wind;
 
-  CityWeatherForecast(this.day, this.temperature, this.wind);
+  CityWeatherForecastEntity(
+      {this.day = '', this.temperature = '', this.wind = ''});
 }
