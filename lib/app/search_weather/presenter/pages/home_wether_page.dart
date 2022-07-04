@@ -20,31 +20,38 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        child: Column(children: [
-          TextField(
-            controller: searchInputController,
-            decoration: const InputDecoration(label: Text('City name')),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              homeWeatherStore.getCityWeather(searchInputController.text);
-            },
-            child: const Text('Search  '),
-          ),
-          const SizedBox(
-            height: 100,
-          ),
-          ScopedBuilder<HomeWeatherStore, SearchWeatherException,
-              HomeWeatherState>(
-            store: homeWeatherStore,
-            onError: (context, error) => const Text('error'),
-            onLoading: (context) => const Center(
-              child: CircularProgressIndicator(),
+        child: Padding(
+          padding: const EdgeInsets.all(18),
+          child: Column(children: [
+            TextField(
+              controller: searchInputController,
+              decoration: const InputDecoration(label: Text('City name')),
             ),
-            onState: (context, state) => Text(
-                ' current ${state.cityWeatherEntity.description} ${state.cityWeatherEntity.wind} ${state.cityWeatherEntity.temperature}'),
-          )
-        ]),
+            const SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                homeWeatherStore.getCityWeather(searchInputController.text);
+              },
+              child: const Text('Search  '),
+            ),
+            const SizedBox(
+              height: 100,
+            ),
+            ScopedBuilder<HomeWeatherStore, SearchWeatherException,
+                HomeWeatherState>(
+              store: homeWeatherStore,
+              onError: (context, error) => const Text('error'),
+              onLoading: (context) => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              onState: (context, state) => Text(
+                ' current \n${searchInputController.text.toUpperCase()}\n${state.cityWeatherEntity.description}\n${state.cityWeatherEntity.wind}\n${state.cityWeatherEntity.temperature}\n',
+              ),
+            )
+          ]),
+        ),
       ),
     );
   }
