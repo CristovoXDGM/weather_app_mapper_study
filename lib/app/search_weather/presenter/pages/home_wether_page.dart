@@ -31,6 +31,9 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
             },
             child: const Text('Search  '),
           ),
+          const SizedBox(
+            height: 100,
+          ),
           ScopedBuilder<HomeWeatherStore, SearchWeatherException,
               HomeWeatherState>(
             store: homeWeatherStore,

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:weather_app/app/search_weather/domain/entities/city_weather_forecast.dart';
 
 class CityWeatherEntity {

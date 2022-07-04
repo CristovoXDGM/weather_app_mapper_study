@@ -1,7 +1,7 @@
 import 'package:weather_app/app/search_weather/domain/entities/city_weather_forecast.dart';
 import 'package:weather_app/app/shared/contracts/mapper_interface.dart';
 
-class CityWeatherForecastModel
+class CityWeatherForecastMapper
     extends MapperInterface<CityWeatherForecastEntity> {
   @override
   Future<CityWeatherForecastEntity> fromMap(Map<String, dynamic> map) async {
@@ -12,7 +12,7 @@ class CityWeatherForecastModel
         wind: map['wind'],
       );
     } catch (e) {
-      throw Exception();
+      throw Exception(e);
     }
   }
 

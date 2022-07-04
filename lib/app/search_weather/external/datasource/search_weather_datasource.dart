@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:uno/uno.dart';
 import 'package:weather_app/app/search_weather/domain/entities/city_weather_entity.dart';
 import 'package:weather_app/app/search_weather/domain/errors/search_weather_exceptions.dart';
@@ -20,7 +23,10 @@ class SearchWeatherDataSourceImpl implements SearchWeatherDataSource {
     if (response.status != 200) {
       throw EmptySearchException();
     } else {
-      final cityWeather = CityWeatherEntityMapper().fromMap(response.data);
+      debugPrint('[Data] ${response.data}');
+
+      final cityWeather =
+          await CityWeatherEntityMapper().fromMap(response.data);
 
       return cityWeather;
     }
