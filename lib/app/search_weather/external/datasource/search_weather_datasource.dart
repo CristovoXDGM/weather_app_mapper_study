@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uno/uno.dart';
 import 'package:weather_app/app/search_weather/domain/entities/city_weather_entity.dart';
